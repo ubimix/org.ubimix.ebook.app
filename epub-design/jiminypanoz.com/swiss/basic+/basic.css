@@ -1,0 +1,120 @@
+/** basic+ ePub Template is sort of based on swiss ebook design. It is the simplest way to use swiss ebook design principles. It was designed for fiction but can also be used for essays. It is modern, neutral and minimalist.
+swiss ebook design is based on a Pseudo Grid System Layout (depending on type of content), proportions/ratios (whitespace), uniformity and geometry (content is managed as blocks in a flow, pseudo grid system layout helping piling them up), typefaces and minimalism.
+Feel free to use and edit this Stylesheet as you wish (commercial use-paid books allowed).
+Please remove unused styles before publishing. 
+Distributed free at http://jiminypanoz.com
+Copyright 2012 Jiminy Panoz
+It is appreciated you don't remove this comment so that I can be credited. Thanks. **/
+
+/** No font import in this stylesheet. We'll try to stick to Arial, Helvetica or at least the eReader's default sans-serif font. But don't forget you can pick fonts that will add some personality to your ebook: an IBM look-alike if you are discussing technology/computers, a thin font if you want something modern, etc. **/
+
+/**Since KindleGen doesn't support @page, I am putting margin in body. If you don't use this template for KF8 (conversion), you can use @page.**/
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 100%;
+	text-align: justify; /** Builds the pseudo-grid system visually **/
+	margin: 0;
+}
+
+p {
+	font-size: 1em;
+	line-height: 1.5; /** This value is a ratio. It is the best for readability. **/
+	margin: 0.75em 1.75em 0.75em 1.25em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	border-right: 8px solid #000; /** You can stick it to the border of the screen by adding margin-right negative properties for each heading level **/
+	padding: 0.125em 0.5em 0 0;
+	text-align: left;
+	page-break-before: auto;
+	page-break-after: avoid;  /** We try to manage page-breaks cleverly**/
+	margin-bottom: 1em;
+	hyphens: none;
+	-webkit-hyphens: none;
+}
+
+h1 {
+	margin-left: 0.5em;
+	font-size: 2.5em;
+}
+
+h2 {
+	margin-left: 0.6em;
+	font-size: 2em;
+}
+
+h3 {
+	margin-left: 0.65em;
+	font-size: 1.8em;
+}
+
+h4 {
+	margin-left: 0.80em;
+	font-size: 1.5em
+}
+
+h5 {
+	margin-left: 1.05em;
+	font-size: 1.2em
+}
+
+h6 {
+	margin-left: 1.25em;
+	font-size: 1em;
+	font-weight: bold;
+}
+
+ul, ol {
+	line-height: 1.5;
+	margin-right: 2.5em;
+	page-break-inside: avoid; /** We make sure the list is not broken **/
+}
+
+ul {
+	list-style-type: square; /** for the record, value 'none' is not supported in Adobe RMSDK**/
+	padding-bottom: 0.5em;
+}
+
+li {
+	padding-left: 1em;
+	text-align: left;
+}
+
+
+
+img {
+	width: 100%;
+	page-break-before: auto;
+	page-break-after: auto;
+}
+
+blockquote {
+	font-size: 90%;
+	font-style: italic;
+	margin: 1.5em 2em 1.5em 1.5em;
+	page-break-inside: avoid; /** We make sure blockquote is not broken**/
+}
+blockquote span {
+	font-size: 100%;
+	font-style: normal;
+	font-weight: bold; /** span is used for source/name **/
+}
+
+sup {
+	padding-left: 0.25em; /** padding for the sake of whitespace **/
+	padding-right: 0.25em;
+}
+
+a:link, a:visited, a:hover, a:active {
+	color: #e00000;
+	text-decoration: underline;
+}
+
+div.note {
+	border: 1px solid #000;
+	padding: 0.25em 0.25em 0.25em 1em;
+	margin-right: 1em;
+	margin-left: -1em;
+	page-break-inside: avoid; /** visual effect, like a sliding panel **/
+}

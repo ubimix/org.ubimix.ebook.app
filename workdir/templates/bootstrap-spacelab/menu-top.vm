@@ -1,0 +1,38 @@
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="$context.pathTo('index.html')">${context.siteTitle}</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          #foreach( $item in $context.toc )
+           #set ( $children = $item.children )
+           #if ( $context.isActive($item.contentHref) ) #set ($active = "active") #else #set ($active = "") #end
+           #if($children.empty)
+             <li class="$active"><a href="${context.pathTo($item.contentHref)}" class="$active">$context.esc($item.label)</a></li>
+           #else
+             <li class="dropdown $active">
+               <a href="#" class="dropdown-toggle" data-toggle="dropdown">$context.esc($item.label) <b class="caret"></b></a>
+               <ul class="dropdown-menu">
+                 <li class="$active">
+                 #if($item.contentHref)
+                 <a href="${context.pathTo($item.contentHref)}">$context.esc($item.label) &#187;</a></li>
+                 <li class="divider"></li>
+                 #end
+               #foreach($child in $children)
+                 #if ( $context.isActive($child.contentHref) ) #set ($childActive = "active") #else #set ($childActive = "") #end
+                 <li class="$childActive"><a href="${context.pathTo($child.contentHref)}">$context.esc($child.label)</a></li>
+               #end
+               </ul>
+             </li>
+           #end
+          #end
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

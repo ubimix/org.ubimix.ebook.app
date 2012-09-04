@@ -1,0 +1,23 @@
+#parse( "header.vm" )
+#parse( "menu-top.vm" )
+<div class='container'>
+  <header class='jumbotron subhead'>
+    <h1>${context.title}</h1>
+  </header>
+  <section>
+    #set ($mainImg=$context.getProperty("image"))
+    #if ($mainImg)
+      <div class="row">
+         <div class="span4">
+            <img src="$context.urlToPath($mainImg)" />
+         </div>
+         <div class="span8">
+            ${context.content}
+         </div>
+      </div>
+    #else
+      ${context.content}
+    #end
+  </section>
+#parse( "menu-nav.vm" )
+#parse( "bottom.vm" )

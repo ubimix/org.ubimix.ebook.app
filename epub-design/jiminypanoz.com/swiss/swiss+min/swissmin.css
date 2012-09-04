@@ -1,0 +1,312 @@
+/** Swiss + Min Design EPUB Template
+Styles of this ebook file have been designed following principles of Swiss Graphic Design, which have obviously been adapted to ebook's philosophy and specificities. It is complex but minimalist and aims at clarity, rhythm and impact for non-fiction.
+Feel free to use and edit this Stylesheet as you wish (commercial use-paid books allowed). 
+Please remove unused styles (and iBooks' XML if not necessary) before publishing. 
+Distributed free at http://jiminypanoz.com
+Copyright 2012 Jiminy Panoz
+It is appreciated you don't remove this comment so that I can be credited. Thanks. **/ 
+
+
+
+/**************************************************
+**** FONT AFTA SANS THIN by Oriol Esparraguera ****
+**************************************************/
+
+@font-face { 
+	font-family: 'Afta';
+	src: url("../Fonts/AftaSansThin-Regular.otf");
+}
+
+@font-face { 
+	font-family: 'Afta';
+	src: url("../Fonts/AftaSansThin-Italic.otf");
+	font-style: italic;
+}
+
+
+/**************************************************
+******************** GLOBAL ***********************
+**************************************************/
+
+/** If you are just targeting EPUB (no conversion to KF8) then you can define real page margins with @page. **/
+
+body {
+	font-family: 'Afta', Arial, Helvetica, sans-serif; /** it's all about swiss typography **/
+	margin: 0.35em 0.5em; /** base margin. Ratio is approx. 2:3. Values are expressed in em instead of % because we must take small screens into account **/
+	font-size: 100%; /** base font-size. It is 16px and used as a pivot for font-size variation (design and users settings) **/
+	line-height: 1.5; /** all line-height values included in this stylesheet are ratios **/
+	hyphens: auto;
+}
+
+/** we can get rid of the pseudo-grid in the cover page **/
+
+body.cover {
+	margin: 0; /** subclass for cover page **/
+}
+
+/** Here come the global styles we will use for sure. Don't forget they are managed as blocks piling up (they don't pile left and right, hence no "float: left;") **/
+
+p {
+	font-size: 1em;
+	text-align: justify; /** helps build the pseudo-grid visually. pseudo-grid is used to pile content blocks **/
+	margin: 1em; /** different content, different margin. It's the second "column" of our pseudo-grid layout **/
+}
+
+i, em {
+	font-style: italic;
+}
+
+/** There is no Afta style for bold because it is all about thinness. Besides, boldness would have been terrible in such a minimalist design. Since it is used to highlight something important in the flow of text, let's highlight it with background-color (light shade of gray, which is also used for important remarks, notes, tips, warnings, etc.) **/
+
+b, strong {
+	font-weight: normal;
+	background-color: #C2C2C2; /** seems like it is the exact shade of gray for optimizing readability on e-ink screens. And believe me, I've tried fifty different shades **/
+	padding: 0.125em;
+}
+
+/** Time for headings. Their line-height ratios are different in order to improve readability. Please note it is not CSS-optimized so that it is easier to edit. Too see how to optimize your CSS, just take a look at modrna's stylesheet. **/
+
+h1 {
+	font-size: 2.5em;
+	line-height: 1.2;
+	text-align: left; /** left instead of justify since it fixes 90% of hyphenation problems. Same is applied to lists **/
+	margin-left: 0;
+	page-break-before: avoid;
+	page-break-after: avoid;
+	hyphens: none;
+}
+h2 {
+	font-size: 2em;
+	line-height: 1.2;
+	text-align: left;
+	margin-left: 0.45em;
+	page-break-before: avoid;
+	page-break-after: avoid;
+	hyphens: none;
+} 
+h3 {
+	font-size: 1.5em;
+	line-height: 1.5;
+	text-align: left;
+	margin-left: 0.65em;
+	page-break-before: avoid;
+	page-break-after: avoid;
+	hyphens: none;
+} 
+h4 {
+	color: #666;
+	font-size: 1.25em;
+	line-height: 1.5;
+	text-align: left;
+	margin-left: 0.8em;
+	page-break-before: avoid;
+	page-break-after: avoid;
+	hyphens: none;
+}
+h5 {
+	color: #666;
+	font-size: 1.25em;
+	line-height: 1.5;
+	text-align: left;
+	margin-left: 1.75em;
+	page-break-before: avoid;
+	page-break-after: avoid;
+	hyphens: none;
+} 
+
+/** In non-fiction, blockquotes are important because they are starting points of reflection or  used as arguments and counter-arguments. In other words, they are pillars you build logic on. Let's use different font-size and alignment in the pseudo-grid to make them look important **/
+
+blockquote {
+	font-size: 200%;
+	page-break-before: auto; /** we try to manage content smartly with page-break properties **/
+	page-break-after: avoid;
+	page-break-inside: avoid;
+	text-align: right;
+	hyphens: none;
+	margin-left: 15%; /** trick so that Adobe RMSDK knows how to render it. We're still using pseudo-grid layout **/
+	width: 85%;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+}
+
+/** optional span for source/name of the author **/
+
+blockquote span {
+	display: block;
+	font-size: 60%!important;
+	font-style: italic; 
+	page-break-before: avoid;
+}
+
+/** Since we manage content as blocks, bold characters and links are managed as subblocks **/
+
+a:link, a:visited, a:hover, a:active {
+	padding: 0.125em;
+	border: 1px solid #000;
+	color: #000;
+	text-decoration: none;
+}
+
+/** lists settings **/
+
+ul {
+	list-style-type: square; /** for the record, value 'none' is not supported in Adobe RMSDK**/
+	padding-bottom: 0.5em;
+}
+
+li {
+	padding-left: 1em;
+	text-align: left;
+}
+
+/** footnotes **/
+
+sup {
+	font-size: 75%;
+	padding-left: 0.25em; /** padding for the sake of whitespace **/
+	padding-right: 0.25em;
+}
+
+/** since Adobe RMSDK doesn't understand hierarchy expressed as "sup a", unlike spans (ex: "blockquote span"), we must create a sub-class **/
+
+a.sup{
+	border: none!important; /** we have to specify this as important else Adobe RMSDK won't apply this style **/
+	text-decoration: underline; /** visual hint **/
+}
+
+
+
+/*************************************************
+******************** MEDIA ***********************
+*************************************************/
+
+img {
+	page-break-before: auto;
+	page-break-after: auto;
+	margin: 0.25em 1em 0.25em -0.5em; /**negative margin sticks div to the left border**/
+	width: 99%; /** 99% because of pseudo-grid **/
+	height: auto;
+}
+
+img.height {
+	height: 99%;
+	width: auto;
+	page-break-before: auto; /** we make sure 3:4 pictures are displayed in full-screen but we don't use value 'always' since iBooks doesn't support it. **/
+}
+
+img.cover {
+	width: 100%; /** that's an example. Adapt styles to your covers **/
+	height: auto;
+	margin: 0;
+}
+
+/** Warning! Design choice: caption can only be added to wide pictures **/
+
+.caption {
+	page-break-before: avoid;
+	page-break-after: auto;
+ 	width: 95%;
+	font-size: 90%;
+	font-style: italic;
+	text-align: left;
+	margin-right: 1em;
+	margin-top: -0.65em; /** makes sure caption sticks to picture **/
+	position: relative;
+	padding: 0.25em 0.25em 0.25em 1em;
+}
+
+
+
+/*************************************************
+******************** NOTES ***********************
+*************************************************/
+
+/** Like bold characters, notes are highlighted. They use the same background color to keep coherency in design **/
+
+div.note {
+	page-break-before: auto;
+	page-break-after: auto;
+	page-break-inside: avoid; /** a note is semantically important, it's a block of content with a huge impact. We don't want rendering engines to 'page-break' it. That is why we are using this prop. Besides, It allows us to manage rhythm: we force some pause before a note so that readers can feel/guess it is important. **/
+	background-color: #C2C2C2;
+	margin: 0.5em 1em 0.5em -0.675em; /**negative margin sticks div to the left border**/
+}
+
+p.note {
+	margin: 0 1em 0 1.75em; /**left-margin depends on div left negative margin and pseudo-grid**/
+	padding: 0.5em 0.5em 0.5em 0;
+}
+
+
+
+/**************************************************
+**************** LAYOUT OPTIONS *******************
+**************************************************/
+
+/** Subclass 'intro' can be used to introduce parts and show readers it's a summary **/
+
+p.intro {
+	font-size: 110%;
+	border-left: 4px solid #C2C2C2;
+	padding-left: 0.5em;
+}
+
+/** div number is used as a visual hint for hierarchy. It allows for clean and clear titles and subtitles **/
+
+div.number {
+	page-break-before: auto;
+	page-break-after: avoid;
+	width: 97%; 
+	text-align: right;
+	font-size: 3em;
+	color: #C2C2C2;
+	line-height: 1;
+} 
+
+/** pseudo-class 'gray', which is used for non-important words in title page **/
+
+.gray {
+	color: #666; /** number of the beast **/
+}
+
+
+
+/**************************************************
+***************** EXPERIMENTAL ********************
+******************* SOCIAL9. **********************
+**************************************************/
+
+/** Let's make a table of social elements for fun. It is used for contact. Avoid using it if you don't know how to manage it, this is quite tricky as it depends on font-size set by readers (works up to Large). **/
+
+table {
+	border: 1px solid #000;
+	border-collapse: collapse;
+	clear: left;
+	margin: 1em;
+	border-spacing: 0;
+	font-size: 1.5em;
+	line-height: 1;
+}
+
+td, th {
+	border: 1px dotted #000;
+}
+
+td {
+	width: 3em;
+	height: 3em;
+	text-align: center;
+}
+
+td.gray {
+	color: #C2C2C2;
+	vertical-align: center;
+}
+
+td.full {
+	background-color: #C2C2C2;
+}
+
+a.social {
+	border: none;
+	text-decoration: none;
+}

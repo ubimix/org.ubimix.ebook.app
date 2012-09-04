@@ -1,0 +1,20 @@
+<div class="container">
+    #set ( $next = $context.nextTocItem )
+    #set ( $prev = $context.previousTocItem )
+    <div class="row">
+       <div class="span2">
+          #if($prev)
+            <div style="font-size: small;"><a href="$context.pathTo($prev.contentHref)">← $prev.label</a></div>
+          #else
+            &#160;
+          #end
+       </div>
+       <div class="span2 offset8" style="text-align: right;">
+          #if($next)
+            <div style="font-size: small;"><a href="$context.pathTo($next.contentHref)">$next.label →</a></div>
+          #else
+           &#160;
+          #end
+       </div>
+    </div>
+</div>

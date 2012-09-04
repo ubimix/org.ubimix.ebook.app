@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta charset="utf-8"></meta>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+<title>${context.title}</title>
+<link href="$context.pathTo('assets/css/amelia/bootstrap.css')" rel="stylesheet"></link>
+<link href="$context.pathTo('assets/css/bootstrap-responsive.css')" rel="stylesheet"></link>
+<link href="$context.pathTo('assets/css/docs.css')" rel="stylesheet"></link>
+<script src="$context.pathTo('assets/js/jquery.js')" type="text/javascript"></script>
+<script src="$context.pathTo('assets/js/bootstrap-transition.js')" type="text/javascript"></script>
+<script src="$context.pathTo('assets/js/bootstrap-alert.js')" type="text/javascript"></script>
+<script src="$context.pathTo('assets/js/bootstrap-modal.js')" type="text/javascript"></script>
+<script src="$context.pathTo('assets/js/bootstrap-dropdown.js')" type="text/javascript"></script>
+<script src="$context.pathTo('assets/js/bootstrap-scrollspy.js')" type="text/javascript"></script>
+<script src="$context.pathTo('assets/js/bootstrap-tab.js')" type="text/javascript"></script>
+<script src="$context.pathTo('assets/js/bootstrap-tooltip.js')" type="text/javascript"></script>
+<script src="$context.pathTo('assets/js/bootstrap-popover.js')" type="text/javascript"></script>
+<script src="$context.pathTo('assets/js/bootstrap-button.js')" type="text/javascript"></script>
+<script src="$context.pathTo('assets/js/bootstrap-collapse.js')" type="text/javascript"></script>
+<script src="$context.pathTo('assets/js/bootstrap-carousel.js')" type="text/javascript"></script>
+<script src="$context.pathTo('assets/js/bootstrap-typeahead.js')" type="text/javascript"></script>
+</head>
+<body data-spy="scroll" data-target=".subnav" data-offset="50" data-twttr-rendered="true">
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="$context.pathTo('index.html')">${context.siteTitle}</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          #foreach( $item in $context.toc )
+           #set ( $children = $item.children )
+           #if ( $context.isActive($item.contentHref) ) #set ($active = "active") #else #set ($active = "") #end
+           #if($children.empty)
+             <li class="$active"><a href="${context.pathTo($item.contentHref)}" class="$active">$context.esc($item.label)</a></li>
+           #else
+             <li class="dropdown $active">
+               <a href="#" class="dropdown-toggle" data-toggle="dropdown">$context.esc($item.label) <b class="caret"></b></a>
+               <ul class="dropdown-menu">
+                 <li class="$active"><a href="${context.pathTo($item.contentHref)}">$context.esc($item.label) &#187;</a></li>
+                 <li class="divider"></li>
+               #foreach($child in $children)
+                 #if ( $context.isActive($child.contentHref) ) #set ($childActive = "active") #else #set ($childActive = "") #end
+                 <li class="$childActive"><a href="${context.pathTo($child.contentHref)}">$context.esc($child.label)</a></li>
+               #end
+               </ul>
+             </li>
+           #end
+          #end
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class='container'>
+  <header class='jumbotron subhead'>
+    <h1>${context.title}</h1>
+  </header>
+  <section>
+    #set ($mainImg=$context.getProperty("image"))
+    #if ($mainImg)
+      <div class="row">
+         <div class="span4">
+            <img src="$context.urlToPath($mainImg)" />
+         </div>
+         <div class="span8">
+            ${context.content}
+         </div>
+      </div>
+    #else
+      ${context.content}
+    #end
+  </section>
+  <br /><br /><br /><br /><br />
+  <footer class="footer">
+    <p class="pull-right"><a href="#">Back to top</a></p>
+  </footer>
+</div>
+</body>
+</html>

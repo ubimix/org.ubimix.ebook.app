@@ -1,0 +1,16 @@
+{
+	"siteBaseUrl": "https://beebapp.ubimix.com/xwiki/bin/",
+	"siteIndexPage": "a4",
+	
+	"siteTemplate": "bootstrap-spacelab",
+	"workdir": ".",
+	"siteIndexUrl": "${siteBaseUrl}/${siteIndexPage}/WebHome",
+    "repositoryPath": "${workdir}/.data",
+    "resetRepository": false,
+    "downloadExpirationTimeout": 3600000,
+    "downloadExisting": false,
+    "templatesRoot": "${workdir}/templates/${siteTemplate}/",
+    "epubOutputFile": "${workdir}/output/${siteIndexPage}-${siteTemplate}.epub",
+    "siteOutputDir": "${workdir}/output/${siteIndexPage}-${siteTemplate}/",
+    "accessConfig": "${workdir}/config/access.json"
+}

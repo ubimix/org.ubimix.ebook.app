@@ -1,0 +1,101 @@
+#parse( "header.vm" )
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+      </a>
+      #set ($index = $context.pathTo('index.html'))
+      <a class="brand" href="$index">${context.siteTitle}</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          #set ($idx = 0)
+          #foreach( $item in $context.toc )
+           #set ($idx = $idx + 1)
+           #if ($idx > 1)
+           #set ($ref=$context.pathTo($item.contentHref))
+           #set ( $children = $item.children )
+           #if ( $context.isActive($item.contentHref) ) #set ($active = "active") #else #set ($active = "") #end
+           #if($children.empty)
+             <li class="$active"><a href="$ref" class="$active">$context.esc($item.label)</a></li>
+           #else
+             <li class="dropdown $active">
+               <a href="#" class="dropdown-toggle" data-toggle="dropdown">$context.esc($item.label) <b class="caret"></b></a>
+               <ul class="dropdown-menu">
+                 #if($item.contentHref)
+                 <li class="$active"><a href="${context.pathTo($item.contentHref)}">$context.esc($item.label) &#187;</a></li>
+                 <li class="divider"></li>
+                 #end
+               #foreach($child in $children)
+                 #if ( $context.isActive($child.contentHref) ) #set ($childActive = "active") #else #set ($childActive = "") #end
+                 <li class="$childActive"><a href="${context.pathTo($child.contentHref)}">$context.esc($child.label)</a></li>
+               #end
+               </ul>
+             </li>
+           #end
+          #end
+          #end
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class='container'>
+    #set ($mainImg=$context.getProperty("image"))
+  <header class='jumbotron subhead'>
+     #if ($mainImg)
+      <div class="row">
+         <div class="span4">
+            <img src="$context.urlToPath($mainImg)"/>
+         </div>
+         <div class="span8">
+           <h1>${context.title}</h1>
+         </div>
+      </div>
+     #else
+      <div class="row">
+         <div class="span12">
+           <h1>${context.title}</h1>
+         </div>
+      </div>
+     #end
+     
+     <div class="row">
+       <div class="span8">
+     #set ($url=$context.getSystemProperty("url"))
+     #set ($author = $context.getSystemProperty("pageAuthor"))
+     #set ($date = $context.formatDate($context.getSystemProperty("date"), "dd MMMM yyyy", "fr"))
+     #if ($url || $author || $date)
+     <address>
+        #if ($author)
+        <strong>
+           #set($authorUrl = $context.getSystemProperty("pageAuthorUrl"))
+           Par <a href="$authorUrl">$context.esc($author)</a>
+        </strong>
+        #end
+        #if ($date)
+        <div>
+           $date
+        </div>
+        #end
+       #if ($url)
+       <div>
+         <a href="$url" class="umx_url">$url</a>
+       </div>
+       #end
+     </address>
+     #end
+       </div>
+     </div>
+  </header>
+  <section>
+    <div class="row">
+      <div class="span8">
+        ${context.content}
+      </div>
+    </div>
+  </section>
+</div>
+#parse( "bottom.vm" )

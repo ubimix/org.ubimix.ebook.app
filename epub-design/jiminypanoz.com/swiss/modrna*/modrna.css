@@ -1,0 +1,196 @@
+/** Modrna* ePub Template is based on swiss ebook design. It is the one of the simplest way to use swiss ebook design principles. It was designed for fiction but can also be used for essays. It is modern, neutral and minimalist.
+swiss ebook design is based on a Pseudo Grid System Layout (depending on type of content), proportions/ratios (whitespace), uniformity and geometry (content is managed as blocks in a flow, pseudo grid system layout helping piling them up), typefaces and minimalism.
+Feel free to use and edit this Stylesheet as you wish (commercial use-paid books allowed).
+Please remove unused styles (and iBooks' XML if not necessary) before publishing. 
+Distributed free at http://jiminypanoz.com
+Copyright 2012 Jiminy Panoz
+It is appreciated you don't remove this comment so that I can be credited. Thanks. **/
+
+/**************************************************
+******** FONT COOLVETICA by Larabie Fonts *********
+**************************************************/
+
+
+
+/** This font is used for headings **/
+
+@font-face { 
+	font-family: 'Coolvetica';
+	src: url("../Fonts/coolvetica.otf");
+}
+
+/**************************************************
+******************** GLOBAL ***********************
+**************************************************/
+
+/** If you are just targeting EPUB (no conversion to KF8) then you can define real page margins with @page. **/
+
+body {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 100%;
+	margin: 0.65em 1em; /** 2:3 ratio **/
+	text-align: justify;
+	hyphens: auto;
+}
+
+p {
+	font-size: 1em;
+	text-indent: 1.5em;
+	margin: 0;
+	padding: 0;
+	line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Coolvetica', Helvetica, Arial, sans-serif;
+	text-align: left;
+	padding: 0;
+	hyphens: none;
+}
+
+h1 {
+	font-size: 2.5em;
+	line-height: 1;
+	margin-top: 0.25em;
+}
+
+h2 {
+	font-size: 2em;
+	line-height: 1;
+}
+
+h3, h4, h5, h6 {
+	font-size: 1.5em;
+	line-height: 1;
+}
+
+/** lists **/
+
+ul, ol {
+	line-height: 1.5;
+	page-break-inside: avoid;
+	margin: 0 0 0 0.75em;
+	padding: 0.75em;
+}
+
+ul {
+	list-style-type: square; /** for the record, value 'none' is not supported in Adobe RMSDK**/
+}
+
+li {
+	text-align: left;
+}
+
+/** In fiction, it is useful to have some blockquote styles so that designers can manage letters written by characters, newspaper excerpts, etc. **/
+
+blockquote {
+	font-size: 90%;
+	font-style: italic; 
+	page-break-before: auto; /** we try to manage content smartly with page-break properties **/
+	page-break-after: avoid;
+	page-break-inside: avoid;
+	text-align: justify;
+	margin-left: 5%;
+	margin-right: 5%; /** trick so that Adobe RMSDK knows how to render it. We're still using pseudo-grid layout **/
+	width: 90%;  /** Please note pictures in blockquotes will be 90% too **/
+	padding-top: 0.5em;
+	padding-bottom: 0.5em; /** visual hint to differentiate content **/
+}
+
+/** optional span for source/name of the author **/
+
+blockquote span {
+	display: block;
+	font-size: 90%!important;
+	font-weight: normal;
+	font-style: normal;
+	text-align: right; 
+	page-break-before: avoid;
+	page-break-after: auto;
+}
+
+
+/** footnotes **/
+
+sup {
+	padding-left: 0.25em; /** padding for the sake of whitespace **/
+	padding-right: 0.25em;
+}
+
+
+a:link, a:visited, a:hover, a:active {
+	color: #666;
+	text-decoration: underline;
+}
+
+
+/**************************************************
+**************** LAYOUT OPTIONS *******************
+**************************************************/
+
+
+/** div number is used as a visual hint for hierarchy. 
+It allows clean and clear titles and subtitles **/
+
+div.number {
+	font-family: 'Coolvetica', Helvetica, Arial, sans-serif;
+	page-break-before: auto;
+	page-break-after: avoid;
+	width: 95%; 
+	text-align: left;
+	font-size: 1.5em;
+	color: #666;
+	padding: 0.75em 0 0 1em;
+	line-height: 1;
+} 
+
+/** Instead of a traditional break (p+p where first p has no text-indent), let's do that swiss style! **/
+
+div.cut {
+	font-family: 'Coolvetica', Helvetica, Arial, sans-serif;
+	font-size: 250%;
+	text-align: left;
+	text-indent: 0;
+	color: #666;
+	padding: 0.5em 0 0.25em 1em;
+	page-break-before: auto;
+	page-break-after: avoid; /** visual hint so that break be sticked to following paragraph. **/
+}
+
+
+
+/*************************************************
+******************** MEDIA ***********************
+*************************************************/
+
+img {
+	page-break-before: auto;
+	page-break-after: auto;
+	padding: 1em 0;
+	width: 100%;
+	height: auto;
+}
+
+img.cover {
+	width: 100%; /** that's an example. Adapt styles to your covers **/
+	height: auto;
+	margin: 0;
+	padding: 0;
+}
+
+/**************************************************
+****************** TITLE PAGE *********************
+**************************************************/
+
+
+/** Styles for title page **/
+
+p.title {
+	text-indent: 0;
+	color: #666;
+	padding: 0.5em 0 0.5em 1.5em;
+}
+
+body.cover {
+  margin: 0;
+}
