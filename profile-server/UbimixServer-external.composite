@@ -1,0 +1,45 @@
+# Basic profiles
+scan-composite:mvn:org.ops4j.pax.runner.profiles/core//composite
+scan-composite:mvn:org.ops4j.pax.runner.profiles/config//composite
+scan-composite:mvn:org.ops4j.pax.runner.profiles/compendium//composite
+scan-composite:mvn:org.ops4j.pax.runner.profiles/log//composite
+scan-composite:mvn:org.ops4j.pax.runner.profiles/web//composite
+# scan-composite:mvn:org.ops4j.pax.runner.profiles/war//composite
+scan-bundle:mvn:org.ops4j.pax.confman/pax-confman-propsloader
+
+# Vaadin
+# scan-bundle:mvn:com.vaadin/vaadin/6.7.4
+
+# Re-packaged libraries
+scan-bundle:mvn:org.ubimix.libs/org.ubimix.libs.httpclient/4.2.1
+scan-bundle:mvn:org.ubimix.libs/org.ubimix.libs.htmlcleaner/2.2.0
+
+## Commons libraries
+scan-bundle:mvn:org.ubimix.commons/org.ubimix.commons.utils/1.2.1
+scan-bundle:mvn:org.ubimix.commons/org.ubimix.commons.strings/1.2.1
+scan-bundle:mvn:org.ubimix.commons/org.ubimix.commons.events/1.2.1
+scan-bundle:mvn:org.ubimix.commons/org.ubimix.commons.adapters/1.2.1
+scan-bundle:mvn:org.ubimix.commons/org.ubimix.commons.json/1.2.1
+scan-bundle:mvn:org.ubimix.commons/org.ubimix.commons.uri/1.2.1
+scan-bundle:mvn:org.ubimix.commons/org.ubimix.commons.iterator/1.2.1
+scan-bundle:mvn:org.ubimix.commons/org.ubimix.commons.osgi/1.2.1
+scan-bundle:mvn:org.ubimix.commons/org.ubimix.commons.xml/1.2.1
+
+# External dependencies
+scan-bundle:mvn:org.apache.xmlcommons/com.springsource.org.apache.xmlcommons
+scan-bundle:mvn:org.apache.commons/com.springsource.org.apache.commons.codec
+scan-bundle:mvn:eu.medsea.mimeutil/mime-util/2.1.3
+
+## Templates
+scan-bundle:mvn:org.ubimix.commons/org.ubimix.commons.templates.api/1.2.1
+## Velocity
+scan-bundle:mvn:org.ubimix.commons/org.ubimix.commons.templates.velocity/1.2.1
+scan-bundle:mvn:commons-collections/commons-collections/3.2.1
+scan-bundle:mvn:commons-lang/commons-lang/2.4
+scan-bundle:mvn:org.apache.velocity/velocity/1.7
+## Freemarker
+scan-bundle:mvn:org.ubimix.commons/org.ubimix.commons.templates.freemarker/1.2.1
+scan-bundle:mvn:org.ubimix.libs/org.ubimix.libs.freemarker/2.3.18
+## Stringtemplate
+scan-bundle:mvn:org.ubimix.commons/org.ubimix.commons.templates.stringtemplate/1.2.1
+scan-bundle:mvn:org.ubimix.libs/org.ubimix.libs.stringtemplate/4.0.0

@@ -1,0 +1,5 @@
+scan-composite:./UbimixServer-external.composite
+scan-bundle:mvn:org.ubimix.scrapper/org.ubimix.scrapper.app/1.2.1
+scan-bundle:mvn:org.ubimix.scrapper/org.ubimix.scrapper.protocol/1.2.1
+scan-bundle:mvn:org.ubimix.scrapper/org.ubimix.scrapper.resources/1.2.1
+scan-bundle:mvn:org.ubimix.scrapper/org.ubimix.scrapper.transformer/1.2.1
