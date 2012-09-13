@@ -31,10 +31,10 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>target/cli/lib</outputDirectory>
+                            <outputDirectory>${project.build.directory}/cli/lib</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>target</directory>
+                                    <directory>${project.build.directory}</directory>
                                     <includes>
                                         <include>*.jar</include>
                                     </includes>
@@ -49,10 +49,10 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>target/cli</outputDirectory>
+                            <outputDirectory>${project.build.directory}/cli</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>src/main/scripts/</directory>
+                                    <directory>${basedir}/src/main/scripts/</directory>
                                 </resource>
                             </resources>
                         </configuration>
@@ -64,7 +64,7 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>target/cli</outputDirectory>
+                            <outputDirectory>${project.build.directory}/cli</outputDirectory>
                             <resources>
                                 <resource>
                                     <directory>${workdir}</directory>
@@ -95,7 +95,7 @@
                             <goal>copy-dependencies</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>target/cli/lib</outputDirectory>
+                            <outputDirectory>${project.build.directory}/cli/lib</outputDirectory>
                             <!-- <excludeTransitive>true</excludeTransitive> -->
                             <includeScope>runtime</includeScope>
                         </configuration>
@@ -107,7 +107,7 @@
                 <version>2.3</version>
                 <configuration>
                     <descriptors>
-                        <descriptor>src/main/assembly/zip.xml</descriptor>
+                        <descriptor>${basedir}/src/main/assembly/zip.xml</descriptor>
                     </descriptors>
                 </configuration>
                 <executions>
